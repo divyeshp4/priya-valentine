@@ -1,0 +1,31 @@
+<script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const message = document.getElementById("message");
+
+    let yesSize = 1;
+
+    function moveNoButton() {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 100);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+
+        yesSize += 0.15;
+        yesBtn.style.transform = `scale(${yesSize})`;
+    }
+
+    // For desktop hover
+    noBtn.addEventListener("mouseover", moveNoButton);
+
+    // For mobile tap
+    noBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        moveNoButton();
+    });
+
+    yesBtn.addEventListener("click", () => {
+        document.querySelector(".buttons").style.display = "none";
+        message.style.display = "block";
+    });
+</script>
